@@ -10,6 +10,12 @@ import topicRouter from "./topic.routes.js";
 import userRouter from "./user.routes.js";
 import categoryRouter from "./category.routes.js";
 
+import authorSocial from "./authorSocial.routes.js"
+import descQA from "./descQA.routes.js"
+import descTopic from "./descTopic.routes.js";
+import synonym from "./synonym.routes.js"
+import tag from "./tag.routes.js"
+
 
 const router = Router();
 
@@ -23,6 +29,12 @@ router.use("/guest", guestRouter);
 router.use("/social", socialRouter);
 router.use("/topic", topicRouter);
 router.use("/user", userRouter);
+
+router.use("/authorSocial", authorSocial)
+router.use("/descQA", descQA);
+router.use("/descTopic", descTopic);
+router.use("/synonym", synonym);
+router.use("/tag", tag);
 
 
 export default router;

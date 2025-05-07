@@ -2,8 +2,8 @@ import categoryService from "../services/category.service.js";
 
 export const getAll = async (req, res, next) => {
   try {
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
     const limit = parseInt(req.query.limit) || 10;
-    const page = parseInt(req.query.page) || 0;
 
     const totalItems = await categoryService.count();
     const data = await categoryService.getAll(limit, page);

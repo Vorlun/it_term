@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-export const createauthorValidation = Joi.object({
+export const createAuthorValidation = Joi.object({
   author_first_name: Joi.string().required(),
   author_last_name: Joi.string().required(),
   author_nick_name: Joi.string().optional(),
@@ -14,7 +14,7 @@ export const createauthorValidation = Joi.object({
   author_is_active: Joi.boolean().optional(),
 });
 
-export const updateauthorValidation = Joi.object({
+export const updateAuthorValidation = Joi.object({
   author_first_name: Joi.string(),
   author_last_name: Joi.string(),
   author_nick_name: Joi.string(),

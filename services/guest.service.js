@@ -2,10 +2,11 @@ import guestModel from "../models/guest.model.js";
 
 const create = (data) => guestModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  guestModel.find()
+const getAll = (limit, page) =>
+  guestModel
+    .find()
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) => guestModel.findById(id);
 

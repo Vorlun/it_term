@@ -2,8 +2,8 @@ import qaService from "../services/qa.service.js";
 
 export const getAll = async (req, res, next) => {
   try {
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
     const limit = parseInt(req.query.limit) || 10;
-    const page = parseInt(req.query.page) || 0;
 
     const totalItems = await qaService.count();
     const data = await qaService.getAll(limit, page);

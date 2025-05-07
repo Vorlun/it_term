@@ -2,13 +2,13 @@ import topicModel from "../models/topic.model.js";
 
 const create = (data) => topicModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
+const getAll = (limit, page) =>
   topicModel
     .find()
-    .populate("author_id", "author_first_name author_last_name author_email") 
+    .populate("author_id", "author_first_name author_last_name author_email")
     .populate("expert_id", "author_first_name author_email")
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) =>
   topicModel

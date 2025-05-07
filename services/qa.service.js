@@ -2,10 +2,12 @@ import QAModel from "../models/QA.model.js";
 
 const create = (data) => QAModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  QAModel.find().populate("user_id", "user_name" ).populate("expert_id","user_name")
+const getAll = (limit, page) =>
+  QAModel.find()
+    .populate("user_id", "user_name")
+    .populate("expert_id", "user_name")
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) =>
   QAModel.findById(id)

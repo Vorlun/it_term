@@ -1,6 +1,10 @@
 export function errorHandler(err, req, res, next) {
   console.error("ERROR:", err);
 
+  if (process.env.NODE_ENV === "development") {
+    console.error(err.stack);
+  }
+
   if (err.name === "ValidationError") {
     const errors = Object.values(err.errors).map((e) => e.message);
     return res.status(400).json({

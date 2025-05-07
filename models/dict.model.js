@@ -6,4 +6,11 @@ const dictSchema = new Schema({
 },
 {timestamps:true,versionKey:false})
 
+dictSchema.pre("save", function (next) {
+  if (this.term) {
+    this.letter = this.term.charAt(0).toUpperCase(); 
+  }
+  next();
+});
+
 export default model("Dict", dictSchema)

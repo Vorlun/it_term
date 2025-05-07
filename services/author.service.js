@@ -2,10 +2,11 @@ import authorModel from "../models/author.model.js";
 
 const create = (data) => authorModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  authorModel.find()
+const getAll = (limit , page ) =>
+  authorModel
+    .find()
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) => authorModel.findById(id);
 

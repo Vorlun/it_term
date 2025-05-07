@@ -2,10 +2,10 @@ import adminModel from "../models/admin.model.js";
 
 const create = (data) => adminModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
+const getAll = (limit, page) =>
   adminModel.find()
     .limit(limit)
-    .skip(page * limit);
+    .skip((page-1) * limit);
 
 const getOne = (id) => adminModel.findById(id);
 

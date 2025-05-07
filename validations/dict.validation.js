@@ -1,11 +1,11 @@
 import Joi from "joi";
 
-export const createdictValidation = Joi.object({
+export const createDictValidation = Joi.object({
   term: Joi.string().trim().required(),
   letter: Joi.string().uppercase().optional(),
 });
 
-export const updatedictValidation = Joi.object({
+export const updateDictValidation = Joi.object({
   term: Joi.string().trim(),
   letter: Joi.string().uppercase(),
 });

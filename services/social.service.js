@@ -2,10 +2,11 @@ import socialModel from "../models/social.model.js";
 
 const create = (data) => socialModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  socialModel.find()
+const getAll = (limit, page) =>
+  socialModel
+    .find()
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) => socialModel.findById(id);
 

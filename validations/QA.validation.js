@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-export const createqaValidation = Joi.object({
+export const createQAValidation = Joi.object({
   question: Joi.string().required(),
   answer: Joi.string().required(),
   is_checked: Joi.boolean().optional(),
@@ -8,7 +8,7 @@ export const createqaValidation = Joi.object({
   expert_id: Joi.string().required(),
 });
 
-export const updateqaValidation = Joi.object({
+export const updateQAValidation = Joi.object({
   question: Joi.string(),
   answer: Joi.string(),
   is_checked: Joi.boolean(),

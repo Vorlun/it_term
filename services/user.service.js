@@ -2,10 +2,11 @@ import userModel from "../models/user.model.js";
 
 const create = (data) => userModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  userModel.find()
+const getAll = (limit, page) =>
+  userModel
+    .find()
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) => userModel.findById(id);
 

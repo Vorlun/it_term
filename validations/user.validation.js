@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-export const createuserValidation = Joi.object({
+export const createUserValidation = Joi.object({
   user_name: Joi.string().trim().required(),
   user_email: Joi.string().email().required(),
   user_password: Joi.string().min(6).required(),
@@ -9,7 +9,7 @@ export const createuserValidation = Joi.object({
   user_is_active: Joi.boolean().optional(),
 });
 
-export const updateuserValidation = Joi.object({
+export const updateUserValidation = Joi.object({
   user_name: Joi.string().trim(),
   user_email: Joi.string().email(),
   user_password: Joi.string().min(6),

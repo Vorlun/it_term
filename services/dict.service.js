@@ -2,10 +2,11 @@ import dictModel from "../models/dict.model.js";
 
 const create = (data) => dictModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  dictModel.find()
+const getAll = (limit, page) =>
+  dictModel
+    .find()
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) => dictModel.findById(id);
 

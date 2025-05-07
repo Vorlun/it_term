@@ -2,10 +2,12 @@ import categoryModel from "../models/category.model.js";
 
 const create = (data) => categoryModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  categoryModel.find().populate('parent_category_id', 'category_name')
+const getAll = (limit, page) =>
+  categoryModel
+    .find()
+    .populate("parent_category_id", "category_name")
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) =>
   categoryModel.findById(id).populate("parent_category_id", "category_name");

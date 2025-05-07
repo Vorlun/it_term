@@ -2,8 +2,8 @@ import adminService from "../services/admin.service.js";
 
 export const getAll = async (req, res, next) => {
   try {
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
     const limit = parseInt(req.query.limit) || 10;
-    const page = parseInt(req.query.page) || 0;
 
     const totalItems = await adminService.count();
     const data = await adminService.getAll(limit, page);

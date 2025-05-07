@@ -2,10 +2,12 @@ import descModel from "../models/desc.model.js";
 
 const create = (data) => descModel.create(data);
 
-const getAll = (limit = 10, page = 0) =>
-  descModel.find().populate('category_id', 'category_name')
+const getAll = (limit , page) =>
+  descModel
+    .find()
+    .populate("category_id", "category_name")
     .limit(limit)
-    .skip(page * limit);
+    .skip((page - 1) * limit);
 
 const getOne = (id) =>
   descModel.findById(id).populate("category_id", "category_name");
