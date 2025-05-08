@@ -1,23 +1,17 @@
 import tag from "../models/tag.model.js";
-import mongoose from "mongoose";
-
-const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
+import { validateObjectIds } from "../lib/validateObjectIds.js";
 
 const create = async (data) => {
-  if (!isValidObjectId(data.topic_id) || !isValidObjectId(data.category_id)) {
-    throw new Error("Invalid topic_id or category_id");
-  }
+  validateObjectIds({ topic_id: data.topic_id, category_id: data.category_id });
   return tag.create(data);
 };
 
 const update = async (id, data) => {
-  if (
-    !isValidObjectId(id) ||
-    !isValidObjectId(data.topic_id) ||
-    !isValidObjectId(data.category_id)
-  ) {
-    throw new Error("Invalid ID");
-  }
+  validateObjectIds({
+    id,
+    topic_id: data.topic_id,
+    category_id: data.category_id,
+  });
   return tag.findByIdAndUpdate(id, data, { new: true });
 };
 

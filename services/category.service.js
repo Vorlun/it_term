@@ -1,32 +1,6 @@
-import categoryModel from "../models/category.model.js";
+import AdminModel from "../models/admin.model.js";
+import { createCrudService } from "../lib/crudService.js";
 
-const create = (data) => categoryModel.create(data);
+const adminService = createCrudService(AdminModel);
 
-const getAll = (limit, page) =>
-  categoryModel
-    .find()
-    .populate("parent_category_id", "category_name")
-    .limit(limit)
-    .skip((page - 1) * limit);
-
-const getOne = (id) =>
-  categoryModel.findById(id).populate("parent_category_id", "category_name");
-
-const update = (id, data) =>
-  categoryModel.findByIdAndUpdate(id, data, {
-    new: true,
-    runValidators: true,
-  });
-
-const remove = (id) => categoryModel.findByIdAndDelete(id);
-
-const count = () => categoryModel.countDocuments();
-
-export default {
-  create,
-  getAll,
-  getOne,
-  update,
-  remove,
-  count,
-};
+export default adminService;

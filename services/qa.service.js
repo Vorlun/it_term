@@ -1,34 +1,7 @@
-import QAModel from "../models/QA.model.js";
+// services/admin.service.js
+import AdminModel from "../models/admin.model.js";
+import { createCrudService } from "../lib/crudService.js";
 
-const create = (data) => QAModel.create(data);
+const adminService = createCrudService(AdminModel);
 
-const getAll = (limit, page) =>
-  QAModel.find()
-    .populate("user_id", "user_name")
-    .populate("expert_id", "user_name")
-    .limit(limit)
-    .skip((page - 1) * limit);
-
-const getOne = (id) =>
-  QAModel.findById(id)
-    .populate("user_id", "user_name")
-    .populate("expert_id", "user_name");
-
-const update = (id, data) =>
-  QAModel.findByIdAndUpdate(id, data, {
-    new: true,
-    runValidators: true,
-  });
-
-const remove = (id) => QAModel.findByIdAndDelete(id);
-
-const count = () => QAModel.countDocuments();
-
-export default {
-  create,
-  getAll,
-  getOne,
-  update,
-  remove,
-  count,
-};
+export default adminService;
