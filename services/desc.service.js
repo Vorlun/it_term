@@ -1,6 +1,6 @@
-import AdminModel from "../models/admin.model.js";
+import descModel from "../models/desc.model.js";
 import { createCrudService } from "../lib/crudService.js";
 
-const adminService = createCrudService(AdminModel);
+const descService = createCrudService(descModel);
 
-export default adminService;
+export default descService;

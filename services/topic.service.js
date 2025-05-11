@@ -1,7 +1,6 @@
-// services/admin.service.js
-import AdminModel from "../models/admin.model.js";
+import topicModel from "../models/topic.model.js";
 import { createCrudService } from "../lib/crudService.js";
 
-const adminService = createCrudService(AdminModel);
+const topicService = createCrudService(topicModel);
 
-export default adminService;
+export default topicService;

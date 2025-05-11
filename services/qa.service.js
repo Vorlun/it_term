@@ -1,7 +1,7 @@
-// services/admin.service.js
-import AdminModel from "../models/admin.model.js";
+// services/qa.service.js
+import qaModel from "../models/QA.model.js";
 import { createCrudService } from "../lib/crudService.js";
 
-const adminService = createCrudService(AdminModel);
+const qaService = createCrudService(qaModel);
 
-export default adminService;
+export default qaService;

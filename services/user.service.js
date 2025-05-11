@@ -1,4 +1,4 @@
-import AdminModel from "../models/admin.model.js";
+import userModel from "../models/user.model.js";
 import { createCrudService } from "../lib/crudService.js";
 
-export default createCrudService(AdminModel);
+export default createCrudService(userModel);

@@ -1,18 +1,15 @@
 import { Router } from "express";
 import * as adminController from "../controllers/admin.controller.js";
-import validate from "../middlewares/validate.js";
-import {
-  createAdminValidation,
-  updateAdminValidation,
-} from "../validations/admin.validation.js";
+import { authenticate } from "../middlewares/auth.js";
+import { authorizeCreator } from "../middlewares/authorize.js";
 
 const router = Router();
 
-router.get("/", adminController.getAll);
-router.get("/:id", adminController.getOne);
-router.post("/", validate(createAdminValidation), adminController.create);
-router.patch("/:id", validate(updateAdminValidation), adminController.update);
-
-router.delete("/:id", adminController.remove);
+router.get("/", authenticate, adminController.getAll);
+router.get("/:id", authenticate, adminController.getOne);
+router.post("/", authenticate, authorizeCreator, adminController.create);
+router.put("/:id", authenticate, authorizeCreator, adminController.update);
+router.delete("/:id", authenticate, authorizeCreator, adminController.remove);
+router.post("/login", adminController.login);
 
 export default router;

@@ -7,7 +7,7 @@ const create = async (data) => {
 };
 
 const update = async (id, data) => {
-  validateObjectIds({ id, desc_id: data.desc_id, synonym_id: data.synonym_id });
+  validateObjectIds({ desc_id: data.desc_id, dict_id: data.dict_id });
   return synonym.findByIdAndUpdate(id, data, { new: true });
 };
 
