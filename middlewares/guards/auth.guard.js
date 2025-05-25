@@ -1,23 +1,19 @@
-import jwt from "jsonwebtoken";
+import { verifyAccessToken } from "../../utils/generateToken.js";
 
 export const authGuard = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+  if (!authHeader?.startsWith("Bearer ")) {
     return res.status(401).json({ success: false, message: "Token topilmadi" });
   }
 
   const token = authHeader.split(" ")[1];
-
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // payload ichidan user ma'lumotlar keladi
+    const decoded = verifyAccessToken(token);
+    req.user = decoded;
     next();
-  } catch (err) {
+  } catch (error) {
     return res
-      .status(403)
-      .json({
-        success: false,
-        message: "Token noto‘g‘ri yoki muddati tugagan",
-      });
+      .status(401)
+      .json({ success: false, message: "Token notogri yoki eskirgan" });
   }
 };
